@@ -30,7 +30,7 @@ namespace RepasoPersona.Core
             }
         }
 
-        public void acreditar (double monto)
+        public void Acreditar (double monto)
         {
             if (monto<0)
             {
