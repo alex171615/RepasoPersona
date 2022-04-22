@@ -1,46 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RepasoPersona.Core
 {
-    public class Persona
+    public class Persona:Abstraccion
     {
-        public string Nombre {get;private set;}
-        public string Apellido{get;private set;}
-        public double Efectivo{get;private set;}
-
+        public string Nombre { get; private set; }
+        public string Apellido { get; private set; }
+        public override double Saldo => base.Saldo + SaldoCuentas;
+        public double SaldoCuentas => Cuentas.Sum(x => x.Saldo);
+        public List<Cuenta> Cuentas { get; set;}
+        public Persona() => Saldo = 0;
         public Persona(string nombre, string apellido, double efectivo)
         {
-            Nombre=nombre;
-            Apellido=apellido;
-            Efectivo=efectivo;
-        }
-        public Persona ()=> Efectivo=0;
-        public void Debito(double monto)
-        {
-            if (monto<=0)
-            {
-                throw new Exception("El monto debe ser > 0");
-                
-            }
-
-            if(Efectivo<monto)
-            {
-                throw new Exception ("Saldo insuficiente");
-                Efectivo -=monto;
-            }
-        }
-
-        public void Acreditar (double monto)
-        {
-            if (monto<0)
-            {
-                throw new Exception("El monto debe ser > 0");
-            }
-             if(Efectivo>monto)
-            {
-                throw new Exception ("Saldo insuficiente");
-                Efectivo +=monto;
-            }
-        }
+            Cuentas = new List<Cuenta>();
+            Nombre = nombre;
+            Apellido = apellido;
+            Saldo = efectivo;
+        } 
     }
 }
