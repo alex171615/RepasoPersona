@@ -8,13 +8,13 @@ namespace RepasoPersona.Test
     {
         public Persona Pepito { get; set; }
 
-        public PersonaTest() => Pepito = new Persona("Juan", "Gomez", 0);
+        public PersonaTest() => Pepito = new Persona("alex", "mayta", 0);
 
         [Fact]
         public void Constructor()
         {
-            Assert.Equal("Juan", Pepito.Nombre);
-            Assert.Equal("Gomez", Pepito.Apellido);
+            Assert.Equal("alex", Pepito.Nombre);
+            Assert.Equal("mayta", Pepito.Apellido);
             Assert.Equal(0, Pepito.Saldo);
         }
 
@@ -55,13 +55,13 @@ namespace RepasoPersona.Test
         }
 
         public Cuenta MercadoPago { get; set; } 
-        public Cuenta Paypal { get; set; }
+        public Cuenta uala { get; set; }
         
         [Fact]
         public double SumaCuentas()
         {
             MercadoPago = new Cuenta(1241, 400);
-            Paypal = new Cuenta(31241, 787);
+            uala = new Cuenta(31241, 787);
             return Pepito.SaldoCuentas;
         }
     }
